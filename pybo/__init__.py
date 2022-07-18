@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flaskext.markdown import Markdown
 from sqlalchemy import MetaData
 
-import config
 
 naming_convention = {
     "ix": 'ix_%(column_0_label)s',
