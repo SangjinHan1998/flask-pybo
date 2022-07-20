@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flaskext.markdown import Markdown
@@ -19,6 +19,9 @@ migrate = Migrate()
 
 # 위의 수정 내용: SQLite 데이터 베이스 플라스크 ORM 에서 정상으로 사용하기 위한것.
 
+
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 def create_app():
     app = Flask(__name__)
@@ -47,5 +50,9 @@ def create_app():
 
     # markdown
     Markdown(app, extensions=['nl2br', 'fenced_code'])
+
+
+    # 오류 페이지
+    app.register_error_handler(404, page_not_found)
 
     return app
