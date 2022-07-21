@@ -12,6 +12,7 @@ def hello_pybo():
 
 @bp.route('/')
 def index():
+    3/0     # 강제 오류 발생
     return redirect(url_for('question._list'))
     '''
     작성일시 순 
